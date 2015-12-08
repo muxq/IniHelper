@@ -68,6 +68,60 @@ public:
 		}
 		return 0;
 	}
+
+	void RigthTrim()
+	{
+		int nIndex = m_UseLen - 1;
+		for(; nIndex > 0; nIndex --)
+		{
+			if (' ' != m_data[nIndex])
+			{
+				break;
+			}
+		}	
+		if (nIndex == 0)
+		{
+			m_UseLen = 0;
+		}
+		else
+		{
+			// 需要转换为长度
+			m_UseLen = nIndex + 1;
+		}
+	}
+
+	void LeftTrim()
+	{
+		int nIndex = 0;
+		for(; nIndex < m_UseLen; nIndex ++)
+		{
+			if (' ' != m_data[nIndex])
+			{
+				break;
+			}
+		}	
+		if (0 == nIndex)
+		{
+			return;
+		}
+		
+		if (nIndex == m_UseLen)
+		{
+			m_UseLen = 0;
+		}
+		else
+		{
+			memcpy(m_data, m_data + nIndex, m_UseLen - nIndex);
+			m_UseLen = m_UseLen - nIndex;
+		}
+	}
+
+	void Trim()
+	{
+		RigthTrim();
+		LeftTrim();
+	}
+	
 protected:
 private:
 	T*		m_data;			// 当前数据

@@ -272,12 +272,15 @@ int CIniHelper::ParseFile()
 			{
 				if (cbSection.GetDataLength() > 0)
 				{
+					cbSection.Trim();
 					cbSection.AppendMemory('\0');
 					strSection = cbSection.GetBufferData();
 					continue;
 				}
 				if (cbKey.GetDataLength() > 0)
 				{
+					cbKey.Trim();
+					cbValue.Trim();
 					cbKey.AppendMemory('\0');
 					cbValue.AppendMemory('\0');
 
