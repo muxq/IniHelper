@@ -1,17 +1,22 @@
-// Test.cpp : 定义控制台应用程序的入口点。
-//
-
 #include "stdafx.h"
 #include "inihelper.h"
-
+#ifdef _WIN32
 int _tmain(int argc, _TCHAR* argv[])
+#else
+int main(int argc, char* argv[])
+#endif
 {
 	int n;
 	int nIndex;
 	for(int nTime = 0; nTime < 100; nTime ++)
 	{
 		CIniHelper helper;
-		helper.SetConfigPath(".\\test.ini");
+#ifdef _WIN32
+        const char *pFileName = ".\\test.ini";
+#else
+        const char *pFileName = "./test.ini";
+#endif
+		helper.SetConfigPath(pFileName);
 		helper.Load();
 		SECTION_TYPE sections;
 		SECTION_VALUE_TYPE section_value;

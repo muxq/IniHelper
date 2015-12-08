@@ -78,3 +78,5 @@
 !lzo2.lib
 *.bsc
 !CrashRpt.exe.manifest
+*.o
+*.so
