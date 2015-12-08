@@ -44,8 +44,11 @@ typedef struct ConfigItem_st{
 #define SECTION_TYPE		std::vector<std::string>
 #define SECTION_VALUE_TYPE	std::vector<ConfigItem>
 
-
+#ifdef _WIN32
 class API CIniHelper{
+#else
+class CIniHelper{
+#endif
 public:
 	CIniHelper();
 	~CIniHelper();
